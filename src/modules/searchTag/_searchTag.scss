@@ -1,0 +1,48 @@
+.searchTag {
+  display: flex;
+  width: 100%;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 550;
+  line-height: 24px;
+
+  p {
+    margin-right: 9px;
+  }
+
+  ul {
+    display: flex;
+    list-style-type: none;
+    padding: 0;
+
+    a {
+      text-decoration: none;
+      background: linear-gradient(93deg, #da15b8 4.93%, #8d06cc 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  }
+
+  &__link {
+    background: var(--plate-color);
+    border-radius: 8px;
+    padding: 4px 6px 8px 6px;
+    align-items: flex-start;
+    cursor: pointer;
+    transition: all 0.3s;
+
+    &:hover,
+    &:active {
+      filter: brightness(0.9);
+    }
+  }
+
+  &__comma {
+    margin: 0 8px 0 3px;
+  }
+
+  &__union {
+    margin: 0 8px;
+  }
+}
