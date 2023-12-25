@@ -3,10 +3,6 @@ import { genUUID } from '../utils/helpers';
 
 const ID_DB = '__wb-userId';
 
-export const sharedState = {
-  userId: ''
-};
-
 class UserService {
   async init() {
     const id = await this.getId();

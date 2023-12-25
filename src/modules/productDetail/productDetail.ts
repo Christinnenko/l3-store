@@ -5,7 +5,6 @@ import { ProductData } from 'types';
 import html from './productDetail.tpl.html';
 import { cartService } from '../../services/cart.service';
 import { analyticsService } from '../../services/analytics.service';
-import { sharedState } from '../../services/user.service';
 
 class ProductDetail extends Component {
   more: ProductList;
@@ -46,11 +45,7 @@ class ProductDetail extends Component {
         this.view.secretKey.setAttribute('content', secretKey);
       });
 
-    fetch('/api/getPopularProducts', {
-      headers: {
-        UserID: sharedState.userId
-      }
-    })
+    fetch('/api/getPopularProducts')
       .then((res) => res.json())
       .then((products) => {
         this.more.update(products);
@@ -61,12 +56,6 @@ class ProductDetail extends Component {
         } catch (error) {
           console.error(error);
         }
-      });
-
-    fetch('/api/getPopularProducts')
-      .then((res) => res.json())
-      .then((products) => {
-        this.more.update(products);
       });
   }
 
