@@ -21,14 +21,14 @@ class SearchTag extends Component {
   }
 
   init() {
-    this.renderTips(['чехол iphone 13 pro', 'коляски agex', 'яндекс станция 2']);
+    this.renderTags(['чехол iphone 13 pro', 'коляски agex', 'яндекс станция 2']);
   }
 
-  renderTips(tips: string[]) {
-    const [firstTip, secondTip, thirdTip] = tips;
-    this.view.firstTip.textContent = firstTip;
-    this.view.secondTip.textContent = secondTip;
-    this.view.thirdTip.textContent = thirdTip;
+  renderTags(tags: string[]) {
+    const [firstTag, secondTag, thirdTag] = tags;
+    this.view.firstTag.textContent = firstTag;
+    this.view.secondTag.textContent = secondTag;
+    this.view.thirdTag.textContent = thirdTag;
   }
 }
 
