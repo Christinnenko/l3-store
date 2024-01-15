@@ -4,10 +4,12 @@ import { formatPrice } from '../../utils/helpers';
 import { ProductData } from 'types';
 import html from './productDetail.tpl.html';
 import { cartService } from '../../services/cart.service';
+import { analyticsService } from '../../services/analytics.service';
 
 class ProductDetail extends Component {
   more: ProductList;
   product?: ProductData;
+  secretKey?: string;
 
   constructor(props: any) {
     super(props);
@@ -47,14 +49,29 @@ class ProductDetail extends Component {
       .then((res) => res.json())
       .then((products) => {
         this.more.update(products);
+        const payload = { ...this.product, secretKey: this.secretKey };
+        const eventType = Object.keys(this.product?.log).length > 0 ? 'viewCardPromo' : 'viewCard';
+        try {
+          analyticsService.sendEvent(eventType, payload);
+        } catch (error) {
+          console.error(error);
+        }
       });
   }
 
   private _addToCart() {
     if (!this.product) return;
+    const payload = this.product;
 
-    cartService.addProduct(this.product);
-    this._setInCart();
+    cartService
+      .addProduct(this.product)
+      .then(() => {
+        this._setInCart();
+        return analyticsService.sendEvent('addToCart', payload);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   }
 
   private _setInCart() {
