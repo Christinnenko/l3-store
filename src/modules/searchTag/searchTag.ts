@@ -12,7 +12,6 @@ class SearchTag extends Component {
     super(html);
     this.products = [];
     this.view = new ViewTemplate(html).cloneView();
-    this.attach(document.body);
   }
 
   attach($root: HTMLElement) {
