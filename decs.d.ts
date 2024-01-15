@@ -1,1 +1,3 @@
-declare module '*.tpl.html' { export default string }
+declare module '*.tpl.html' {
+  export default string;
+}

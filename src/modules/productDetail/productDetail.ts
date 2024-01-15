@@ -33,7 +33,7 @@ class ProductDetail extends Component {
     this.view.description.innerText = description;
     this.view.price.innerText = formatPrice(salePriceU);
     this.view.btnBuy.onclick = this._addToCart.bind(this);
-    this.view.btnFavorites.onclick = this._addToFavorites.bind(this);
+    this.view.btnFav.onclick = this._addToFavorites.bind(this);
 
     const isInCart = await cartService.isInCart(this.product);
     const isInFavorites = await favoritesService.isInFavorites(this.product);
@@ -81,11 +81,11 @@ class ProductDetail extends Component {
   }
 
   private _setInFavorites() {
-    this.view.btnFavorites.classList.add('active');
+    this.view.btnFav.classList.add('active');
   }
 
   private _setNotInFavorites() {
-    this.view.btnFavorites.classList.remove('active');
+    this.view.btnFav.classList.remove('active');
   }
 }
 

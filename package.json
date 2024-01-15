@@ -6,7 +6,7 @@
   "scripts": {
     "build": "webpack",
     "dev": "webpack serve",
-    "deploy": "gh-pages -b L3.1 -d dist"
+    "format": "prettier --write ."
   },
   "author": "",
   "license": "ISC",
