@@ -18,11 +18,6 @@ class FavoritesService {
     await this.set(products.filter(({ id }) => id !== product.id));
   }
 
-  async clear() {
-    await localforage.removeItem(FAVORITES_DB);
-    this._updCounters();
-  }
-
   async get(): Promise<ProductData[]> {
     return (await localforage.getItem(FAVORITES_DB)) || [];
   }
@@ -42,8 +37,9 @@ class FavoritesService {
     const count = products.length >= 10 ? '9+' : products.length;
 
     const favoritesLink = document.querySelector('.favorites') as HTMLElement | null;
+    const countAsNumber: number = typeof count === 'number' ? count : parseInt(count as string, 10);
 
-    if (count > 0) {
+    if (countAsNumber > 0) {
       //@ts-ignore
       favoritesLink.style.display = 'block';
     } else {
